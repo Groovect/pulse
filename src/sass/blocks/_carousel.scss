@@ -1,0 +1,61 @@
+.carousel {
+  padding: 81px 0;
+
+  &__slider {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-arrow {
+      background: none;
+      border: none;
+      img {
+        width: 100%;
+      }
+    }
+
+    &-wrapper {
+      width: 750px;
+      overflow: hidden;
+    }
+
+    &-inner {
+      display: flex;
+      transition: 0.5s all;
+    }
+  }
+
+  &__slide {
+    img {
+      width: 100%;
+    }
+  }
+
+  &__indicators {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    z-index: 10;
+  }
+
+  &__dot {
+    box-sizing: content-box;
+    flex: 0 1 auto;
+    width: 30px;
+    height: 6px;
+    margin-right: 3px;
+    margin-left: 3px;
+    cursor: pointer;
+    background-color: $main-color;
+    background-clip: padding-box;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    opacity: .5;
+    transition: opacity .6s ease;
+  }
+}

@@ -1,0 +1,16 @@
+.feed-form {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  width: 303px;
+  gap: 11px;
+
+  &__input {
+    height: 54px;
+    border: none;
+    border-radius: 5px;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #4B4B4B;
+  }
+}

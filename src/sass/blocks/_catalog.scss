@@ -1,0 +1,209 @@
+.catalog {
+  padding: 26px 0 40px 0;
+
+  &__title {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 45px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #0d0d0d;
+  }
+
+  &__tabs {
+    margin-top: 46px;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0; // для отмены стилей ul
+    padding-left: 0; // для отмены стилей ul
+  }
+
+  &__tab {
+    width: 222px;
+    height: 52px;
+    background: rgba(0, 0, 0, 0.0001);
+    border: 2px solid #d0d0d0;
+    font-weight: 500;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    color: #6b6b6b;
+    transform: skewX(-30deg);
+    cursor: pointer;
+    transition: 0.5s all;
+    &:hover {
+      box-shadow: 3px 3px 20px $main-color;
+      border: none;
+    }
+    &-text {
+      transform: skewX(30deg);
+    }
+    &_active {
+      background: $main-color;
+      color: #ffffff;
+      border: none;
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__content {
+    margin-top: 60px;
+    display: none;
+    gap: 17px;
+    flex-wrap: wrap;
+    &_active {
+     display: flex;
+    } 
+  }
+
+  &__item {
+    width: 303px;
+    min-height: 442px;
+    border: 2px solid #e8e8e8;
+    padding: 20px;
+    overflow: hidden;
+
+    &-wrapper {
+      display: flex;
+      width: calc(200% + 40px);
+    }
+
+    &-content {
+      width: 50%;
+      margin-right: 0px;
+      transform: translateX(-100%);
+      transition: 0.5s all;
+      &_active {
+        transform: translateX(0%);
+        margin-right: 20px;
+      }
+    }
+
+    &-img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: 200px;
+    }
+
+    &-subtitle {
+      margin-top: 15px;
+      font-weight: 700;
+      font-size: 16px;
+      text-align: center;
+      color: #0d0d0d;
+    }
+
+    &-descr {
+      margin-top: 15px;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 22px;
+      text-align: center;
+      color: #0d0d0d;
+    }
+
+    &-link {
+      margin-top: 10px;
+      display: block;
+      font-weight: 500;
+      font-size: 14px;
+      text-align: center;
+      text-decoration-line: underline;
+      text-transform: uppercase;
+      color: $main-color;
+      &:hover {
+        color: #ff0000;
+      }
+    }
+
+    &-list {
+      position: relative;
+      width: 50%;
+      margin-left: 20px;
+      transform: translateX(0%);
+      transition: 0.5s all;
+      padding-right: 20px;
+      padding-left: 19px;
+      margin-bottom: 0;
+      list-style-type: none;
+      &_active {
+        transform: translateX(-100%);
+        margin-left: 0px;
+      }
+    }
+
+    &-points {
+      position: relative;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 21px;
+      color: #555555;
+      margin-bottom: 10px;
+      &:before {
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background-color: $main-color;
+        left: -14px;
+        top: 7px;
+      }
+    }
+
+    &-back {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(calc(-50% - 19px));
+      display: block;
+      font-weight: 500;
+      font-size: 14px;
+      text-decoration-line: underline;
+      text-transform: uppercase;
+      color: $main-color;
+      &:hover {
+        color: #ff0000;
+      }
+    }
+
+    &-divider {
+      margin: 17px 0 19px 0;
+      width: 263px;
+      height: 1px;
+      background: #e8e8e8;
+    }
+
+    &-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-prices {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &-old {
+      font-weight: 300;
+      font-size: 14px;
+      text-decoration-line: line-through;
+      color: #555555;
+    }
+
+    &-new {
+      font-weight: 700;
+      font-size: 20px;
+      color: #050505;
+    }
+  }
+}
