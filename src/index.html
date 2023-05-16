@@ -21,10 +21,10 @@
             <div class="header__name">Garmin, Polar, Suunto</div>
           </div>
           <div class="header__contacts">
-            <a href="tel:+74999228974" class="header__phone"
-              >+7 (499) 922-89-74</a
+            <a href="tel:84999228974" class="header__phone"
+              >8 (499) 922-89-74</a
             >
-            <button class="button">Заказать звонок</button>
+            <button class="button" data-modal="consultation">Заказать звонок</button>
           </div>
         </header>
 
@@ -59,7 +59,7 @@
             </div>
           </div>
 
-          <button class="button button_main">заказать кОНСУЛЬТАЦИЮ</button>
+          <button class="button button_main" data-modal="consultation">заказать кОНСУЛЬТАЦИЮ</button>
           <div class="promo__link">
             или
             <a href="#" class="promo__link promo__link-catalog">
@@ -124,7 +124,7 @@
           <input class="feed-form__input" required name="name" placeholder="Ваше имя" type="text">
           <input class="feed-form__input" required name="phone" placeholder="Ваш телефон" type="number">
           <input class="feed-form__input" required name="email" placeholder="Ваш E-mail" type="email">
-          <button class="button button_submit">заказать консультацию</button>
+          <button class="button button_submit" data-modal="consultation">заказать консультацию</button>
         </form>
       </div>
     </section>
@@ -215,7 +215,7 @@
 
               <div class="catalog__item-content catalog__item-content_active">
                 <img src="img/pulse.png" alt="pulsometer" class="catalog__item-img">
-                <div class="catalog__item-subtitle">Пульсометр Polar FT1</div>
+                <div class="catalog__item-subtitle">Пульсометр Suunto M2</div>
                 <div class="catalog__item-descr">Для первых шагов в тренировках, основанных на сердечном ритме</div>
                 <a href="#" class="catalog__item-link">Подробнее</a>
               </div>
@@ -251,7 +251,7 @@
 
               <div class="catalog__item-content catalog__item-content_active">
                 <img src="img/pulse.png" alt="pulsometer" class="catalog__item-img">
-                <div class="catalog__item-subtitle">Пульсометр Polar FT1</div>
+                <div class="catalog__item-subtitle">Пульсометр Polar FT2</div>
                 <div class="catalog__item-descr">Для первых шагов в тренировках, основанных на сердечном ритме</div>
                 <a href="#" class="catalog__item-link">Подробнее</a>
               </div>
@@ -287,7 +287,7 @@
 
               <div class="catalog__item-content catalog__item-content_active">
                 <img src="img/pulse.png" alt="pulsometer" class="catalog__item-img">
-                <div class="catalog__item-subtitle">Пульсометр Polar FT1</div>
+                <div class="catalog__item-subtitle">Пульсометр Suunto M3</div>
                 <div class="catalog__item-descr">Для первых шагов в тренировках, основанных на сердечном ритме</div>
                 <a href="#" class="catalog__item-link">Подробнее</a>
               </div>
@@ -323,7 +323,7 @@
 
               <div class="catalog__item-content catalog__item-content_active">
                 <img src="img/pulse.png" alt="pulsometer" class="catalog__item-img">
-                <div class="catalog__item-subtitle">Пульсометр Polar FT1</div>
+                <div class="catalog__item-subtitle">Пульсометр Polar BM10</div>
                 <div class="catalog__item-descr">Для первых шагов в тренировках, основанных на сердечном ритме</div>
                 <a href="#" class="catalog__item-link">Подробнее</a>
               </div>
@@ -359,7 +359,7 @@
 
               <div class="catalog__item-content catalog__item-content_active">
                 <img src="img/pulse.png" alt="pulsometer" class="catalog__item-img">
-                <div class="catalog__item-subtitle">Пульсометр Polar FT1</div>
+                <div class="catalog__item-subtitle">Пульсометр Polar FT5</div>
                 <div class="catalog__item-descr">Для первых шагов в тренировках, основанных на сердечном ритме</div>
                 <a href="#" class="catalog__item-link">Подробнее</a>
               </div>
@@ -505,6 +505,99 @@
         </div>
       </div>
     </section>
+
+    <section class="reviews">
+      <div class="container">
+        <div class="reviews__title">Отзывы клиентов</div>
+
+        <div class="reviews__item">
+          <div class="reviews__photo">
+            <img src="img/reviews/irirna.png" alt="first_client" class="reviews__photo-img">
+          </div>
+          <div class="reviews__descr">
+            <div class="reviews__descr-subtitle">Ирина Иванченко</div>
+            <div class="reviews__descr-achievements">2 полумарафона</div>
+            <div class="reviews__descr-text">
+              Не знала, что себе купить - обратилась к ребятам из RunSmart - подобрали пульсометр, который подошёл именно под мои цели и финансовые возможности. Через некоторое время решила обновить гаджет - не раздумывая обратилась туда же. <br><br> Новые цели - новый гаджет! <br><br>
+              Спасибо, RunSmart! 
+            </div>
+          </div>
+        </div>
+        <div class="reviews__item">
+          <div class="reviews__photo">
+            <img src="img/reviews/ivan.png" alt="second_client" class="reviews__photo-img">
+          </div>
+          <div class="reviews__descr">
+            <div class="reviews__descr-subtitle">Иван Сёмочкин</div>
+            <div class="reviews__descr-achievements">1 полумарафон</div>
+            <div class="reviews__descr-text">
+              Крутая штука-пульсометр. Обычно без них бегал. Оказывается только хуже себе делал. <br>
+              Купил пульсометр, ещё в подарок получил тренировку. Со мной вместе провели первую тренировку, научили пользоваться новым гаджетом. Также объяснили основы анатомии, составили план тренировок на месяц вперёд. <br><br>
+              С ними подготовился к своему первому полумарафону! Спасибо!!!
+            </div>
+          </div>
+        </div>
+        <div class="reviews__item">
+          <div class="reviews__photo">
+            <img src="img/reviews/july.png" alt="third_client" class="reviews__photo-img">
+          </div>
+          <div class="reviews__descr">
+            <div class="reviews__descr-subtitle">Юлия Дашкина</div>
+            <div class="reviews__descr-achievements">2 полумарафона</div>
+            <div class="reviews__descr-text">
+              Долго не могла начать бегать, т.к. до этого несколько раз начинала, но становилось тяжело и я бросала. От друзей услышала о RunSmart и о беге с контролем пульса и решила попробовать. <br><br>
+              Позвонила, ребята поинтересовались моими целями и подобрали очень интересный вариант со скидкой! Теперь бегаю и наслаждаюсь бегом! Пробежала уже 2 полумарафона и несколько более коротких забегов и не намерена останавливаться! <br><br> Спасибо!!!
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="footer">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.4303078892885!2d37.64442107723284!3d55.768397990789396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a636edcd2ad%3A0x4c2ca101e2c8c617!2z0JzRj9GB0L3QuNGG0LrQuNC5INC_0YAt0LQsIDQvMywg0JzQvtGB0LrQstCwLCAxMDcwNzg!5e0!3m2!1sru!2sru!4v1684243278977!5m2!1sru!2sru" width="100%" height="630px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="footer__info">
+        <address class="footer__address">Москва, Мясницкий проезд, д.3с1</address>
+        <a href="tel:84999228974" class="footer__phone">8 (499) 922-89-74</a>
+        <div class="footer__social">
+          <a href="#" class="footer__social-item"><img src="icons/social/fb.svg" alt="facebook"></a>
+          <a href="#" class="footer__social-item"><img src="icons/social/inst.svg" alt="instagram"></a>
+          <a href="#" class="footer__social-item"><img src="icons/social/pint.svg" alt="pinterest"></a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="overlay">
+      <div class="modal" id="consultation">
+        <div class="modal__close">&times;</div>
+        <div class="modal__title">Просто заполните форму заявки</div>
+        <div class="modal__subtitle">и мы перезвоним вам в течении 10 минут</div>
+        <form action="#" class="feed-form feed-form_mt25">
+          <input class="feed-form__input" required name="name" placeholder="Ваше имя" type="text">
+          <input class="feed-form__input" required name="phone" placeholder="Ваш телефон" type="number">
+          <input class="feed-form__input" required name="email" placeholder="Ваш E-mail" type="email">
+          <button class="button button_submit">заказать консультацию</button>
+        </form>
+      </div>
+
+      <div class="modal" id="order">
+        <div class="modal__close">&times;</div>
+        <div class="modal__title">Ваш заказ:</div>
+        <div class="modal__subtitle"></div>
+        <form action="#" class="feed-form feed-form_mt25">
+          <input class="feed-form__input" required name="name" placeholder="Ваше имя" type="text">
+          <input class="feed-form__input" required name="phone" placeholder="Ваш телефон" type="number">
+          <input class="feed-form__input" required name="email" placeholder="Ваш E-mail" type="email">
+          <button class="button button_submit">Купить</button>
+        </form>
+      </div>
+
+      <div class="modal modal_mini" id="thanks">
+        <div class="modal__close">&times;</div>
+        <div class="modal__title">Спасибо за вашу заявку!</div>
+        <div class="modal__subtitle">Наш менеджер свяжется с вами в ближайшее время!</div>
+      </div>
+    </div>
 
     <script src="js/script.js"></script>
   </body>

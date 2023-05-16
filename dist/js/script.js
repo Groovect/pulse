@@ -24,70 +24,85 @@ window.addEventListener("DOMContentLoaded", function () {
   indicators.classList.add("carousel__indicators");
   slider.append(indicators);
 
-  for (let i = 0; i < slides.length; i++) {
-    const dot = document.createElement("li");
-    dot.classList.add("carousel__dot");
-    dot.setAttribute("data-slide-to", i + 1);
-
-    if (i == 0) {
-      dot.style.opacity = 1;
+  function createDots() {
+    for (let i = 0; i < slides.length; i++) {
+      const dot = document.createElement("li");
+      dot.classList.add("carousel__dot");
+      dot.setAttribute("data-slide-to", i + 1);
+  
+      if (i == 0) {
+        dot.style.opacity = 1;
+      }
+  
+      indicators.append(dot);
+      dots.push(dot);
     }
-
-    indicators.append(dot);
-    dots.push(dot);
   }
 
-  const cutWidth = () => +width.match(/\d/g).join("");
+  createDots();
 
-  next.addEventListener("click", () => {
-    if (offset == cutWidth() * (slides.length - 1)) {
-      offset = 0;
-    } else {
-      offset += cutWidth();
-    }
+  const cutWidth = +width.slice(0, width.length - 2);
 
-    if (slideIndex == slides.length) {
-      slideIndex = 1;
-    } else {
-      slideIndex++;
-    }
-
-    switchSlides();
-  });
-
-  prev.addEventListener("click", () => {
-    if (offset == 0) {
-      offset = cutWidth() * (slides.length - 1);
-    } else {
-      offset -= cutWidth();
-    }
-
-    if (slideIndex == 1) {
-      slideIndex = slides.length;
-    } else {
-      slideIndex--;
-    }
-
-    switchSlides();
-  });
-
-  dots.forEach((dot) => {
-    dot.addEventListener("click", (e) => {
-      const slideTo = e.target.getAttribute("data-slide-to");
-
-      slideIndex = slideTo;
-      offset = cutWidth() * (slideTo - 1);
-
+  function switchNextSlide() {
+    next.addEventListener("click", () => {
+      if (offset == cutWidth * (slides.length - 1)) {
+        offset = 0;
+      } else {
+        offset += cutWidth;
+      }
+  
+      if (slideIndex == slides.length) {
+        slideIndex = 1;
+      } else {
+        slideIndex++;
+      }
+  
       switchSlides();
     });
-  });
+  }
 
+  function switchPreviousSlide() {
+    prev.addEventListener("click", () => {
+      if (offset == 0) {
+        offset = cutWidth * (slides.length - 1);
+      } else {
+        offset -= cutWidth;
+      }
+  
+      if (slideIndex == 1) {
+        slideIndex = slides.length;
+      } else {
+        slideIndex--;
+      }
+  
+      switchSlides();
+    });
+  }
+
+  switchNextSlide();
+  switchPreviousSlide();
+  
   function switchSlides() {
     slidesField.style.transform = `translateX(-${offset}px)`;
 
     dots.forEach((dot) => (dot.style.opacity = ".5"));
     dots[slideIndex - 1].style.opacity = 1;
   }
+
+  function switchDots() {
+    dots.forEach((dot) => {
+      dot.addEventListener("click", (e) => {
+        const slideTo = e.target.getAttribute("data-slide-to");
+  
+        slideIndex = slideTo;
+        offset = cutWidth * (slideTo - 1);
+  
+        switchSlides();
+      });
+    });
+  }
+  
+  switchDots();
 
   //--------catalog items --------
 
@@ -96,7 +111,7 @@ window.addEventListener("DOMContentLoaded", function () {
     details = document.querySelectorAll(".catalog__item-link"),
     backDetails = document.querySelectorAll(".catalog__item-back");
 
-  function toggleDetails(show, hide, links) {
+  function showDetails(show, hide, links) {
     links.forEach((link, i) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
@@ -107,7 +122,7 @@ window.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function toggleBack(show, hide, links) {
+  function showCard(show, hide, links) {
     links.forEach((link, i) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
@@ -118,8 +133,8 @@ window.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  toggleDetails(itemList, itemContent, details);
-  toggleBack(itemContent, itemList, backDetails);
+  showDetails(itemList, itemContent, details);
+  showCard(itemContent, itemList, backDetails);
 
   const contents = document.querySelectorAll(".catalog__content"),
     tabs = document.querySelectorAll(".catalog__tab");
@@ -152,4 +167,69 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 
   chooseTab(tabs);
+
+  //------Modal------
+
+  const consultation = document.querySelector("#consultation"),
+    order = document.querySelector("#order"),
+    thanks = document.querySelector("#thanks"),
+    overlay = document.querySelector(".overlay"),
+    modalClose = document.querySelectorAll(".modal__close"),
+    attrConsultation = document.querySelectorAll('[data-modal="consultation"]');
+
+  function addAttributesForBtns() {
+    document.querySelectorAll(".button_buy").forEach((btn) => {
+      btn.setAttribute("data-modal", "order");
+    });
+  }
+
+  addAttributesForBtns();
+
+  const attrOrder = document.querySelectorAll('[data-modal="order"]');
+
+  function showModalConsultation() {
+    attrConsultation.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        overlay.classList.add("overlay_active");
+        consultation.style.display = "block";
+      });
+    });
+  }
+
+  const modalSubtitle = document.querySelector('#order .modal__subtitle'),
+              model = document.querySelectorAll('.catalog__item-subtitle');
+
+  function showModalOrder() {
+    attrOrder.forEach((btn, i) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        
+        const modelName = model[i].innerText;
+
+        modalSubtitle.insertAdjacentText('afterbegin', modelName);
+        overlay.classList.add("overlay_active");
+        order.style.display = "block";
+      });
+    });
+  }
+
+  function closeModals() {
+    modalClose.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        consultation.style.display = "none";
+        order.style.display = "none";
+        thanks.style.display = "none";
+        overlay.classList.remove("overlay_active");
+        modalSubtitle.innerText = '';
+      });
+    });
+  }
+
+  showModalConsultation();
+  showModalOrder();
+  closeModals();
 });

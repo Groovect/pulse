@@ -106,6 +106,65 @@
   .carousel {
     padding: 60px 0 20px 0;
   }
+
+  .catalog {
+    &__title {
+      font-size: 24px;
+    }
+    &__tabs {
+      margin-top: 34px;
+    }
+    &__tab {
+      width: 180px;
+      height: 42px;
+      font-size: 14px;
+    }
+    &__content {
+      margin-top: 50px;
+      justify-content: space-around;
+    }
+  }
+
+  .reviews {
+    &__title {
+      font-size: 24px;
+    }
+    &__item {
+      margin-top: 45px;
+      justify-content: center;
+      gap: 15px;
+    }
+    &__descr {
+      max-width: 570px;
+      &-subtitle {
+        font-size: 16px;
+      }
+      &-text {
+        font-size: 14px;
+        line-height: 18px;
+      }
+    }
+  }
+
+  .footer {
+    &__info {
+      width: 360px;
+      height: 230px;
+      padding: 40px 53px 46px;
+    }
+    &__address {
+      font-size: 15px;
+    }
+    &__phone {
+      font-size: 15px;
+    }
+    &__social {
+      &-item {
+        width: 48px;
+        height: 48px;
+      }
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -140,6 +199,9 @@
     &_submit {
       width: 100%;
       height: 32px;
+    }
+    &_buy {
+      width: 100px;
     }
   }
 
@@ -225,6 +287,89 @@
   .carousel {
     padding: 45px 0 20px 0;
   }
+
+  .catalog {
+    &__title {
+      font-size: 20px;
+    }
+    &__tabs {
+      margin-top: 22px;
+    }
+    &__tab {
+      width: 140px;
+      height: 36px;
+      font-size: 12px;
+    }
+    &__item {
+      width: 255px;
+      min-height: 410px;
+      &-img {
+        height: 180px;
+      }
+      &-subtitle {
+        margin-top: 12px;
+        font-size: 15px;
+      }
+      &-descr {
+        font-size: 13px;
+        line-height: 18px;
+      }
+      &-link {
+        font-size: 13px;
+      }
+      &-points {
+        font-size: 12px;
+        line-height: 16px;
+      }
+      &-back {
+        font-size: 13px;
+      }
+      &-divider {
+        margin: 15px 0 15px 0;
+        width: 205px;
+      }
+      &-old {
+        font-size: 12px;
+      }
+      &-new {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .reviews {
+    &__title {
+      font-size: 20px;
+    }
+    &__item {
+      margin-top: 35px;
+    }
+    &__descr {
+      max-width: 410px;
+      &-subtitle {
+        font-size: 15px;
+      }
+      &-achievements {
+        font-size: 13px;
+      }
+      &-text {
+        font-size: 13px;
+        line-height: 16px;
+      }
+    }
+  }
+
+  .footer {
+    &__info {
+      width: 330px;
+      height: 200px;
+      padding: 30px 43px 30px;
+    }
+    &__social-item {
+      width: 44px;
+      height: 44px;
+    }
+  }
 }
 
 @media (max-width: 576px) {
@@ -300,6 +445,146 @@
     padding: 45px 0 20px 0;
     &__indicators {
       display: none;
+    }
+  }
+
+  .catalog {
+    &__title {
+      font-size: 17px;
+    }
+    &__tabs {
+      margin-top: 20px;
+      gap: 6px;
+    }
+    &__tab {
+      width: 110px;
+      height: 34px;
+      font-size: 11px;
+    }
+    &__content {
+      margin-top: 30px;
+    }
+    &__item {
+      min-height: 363px;
+      &-img {
+        height: 150px;
+      }
+      &-subtitle {
+        margin-top: 10px;
+        font-size: 14px;
+      }
+      &-descr {
+        margin-top: 6px;
+        font-size: 12px;
+        line-height: 16px;
+      }
+      &-link {
+        font-size: 12px;
+      }
+      &-points {
+        margin-bottom: 6px;
+        line-height: 15px;
+      }
+      &-back {
+        font-size: 12px;
+      }
+      &-divider {
+        margin: 15px 0 15px 0;
+        width: 205px;
+      }
+      &-old {
+        font-size: 11px;
+      }
+      &-new {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .reviews {
+    &__title {
+      font-size: 17px;
+    }
+    &__item {
+      margin-top: 25px;
+    }
+    &__descr {
+      max-width: 275px;
+      &-subtitle {
+        font-size: 14px;
+      }
+      &-achievements {
+        font-size: 12px;
+      }
+      &-text {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .footer {
+    &__info {
+      width: 245px;
+      height: 180px;
+      padding: 15px 20px 15px;
+    }
+    &__address {
+      font-size: 13px;
+    }
+    &__social {
+      width: 180px;
+      &-item {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    max-width: 290px;
+  }
+  .header {
+    &__logo {
+      width: 160px;
+    }
+    &__phone {
+      font-size: 14px;
+    }
+  }
+  .button {
+    width: 110px;
+    height: 24px;
+    font-size: 10px;
+    &_main {
+      width: 200px;
+      height: 42px;
+      font-size: 12px;
+    }
+    &_submit {
+      width: 100%;
+      height: 32px;
+    }
+  }
+  .promo {
+    &__title {
+      font-size: 24px;
+    }
+    &__subtitle {
+      font-size: 13px;
+    }
+  }
+  .catalog {
+    &__tab {
+      width: 80px;
+      height: 30px;
+      font-size: 8px;
+    }
+  }
+  .reviews {
+    &__descr {
+      max-width: 200px;
     }
   }
 }

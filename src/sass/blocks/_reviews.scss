@@ -1,0 +1,49 @@
+.reviews {
+  padding: 40px 0;
+
+  &__title {
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #0d0d0d;
+  }
+
+  &__item {
+    margin-top: 60px;
+    min-height: 190px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__photo {
+    max-width: 169px;
+    max-height: 169px;
+
+    &-img {
+      width: 100%;
+    }
+  }
+
+  &__descr {
+    max-width: 680px;
+    &-subtitle {
+      font-weight: 700;
+      font-size: 18px;
+      color: #0d0d0d;
+    }
+    &-achievements {
+      font-weight: 500;
+      font-size: 14px;
+      color: #646464;
+    }
+    &-text {
+      margin-top: 10px;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 24px;
+      color: #0d0d0d;
+    }
+  }
+}
