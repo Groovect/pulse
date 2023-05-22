@@ -1,5 +1,6 @@
 .catalog {
   padding: 26px 0 40px 0;
+  min-height: 1103px;
 
   &__title {
     font-weight: 700;
@@ -59,8 +60,8 @@
     gap: 17px;
     flex-wrap: wrap;
     &_active {
-     display: flex;
-    } 
+      display: flex;
+    }
   }
 
   &__item {
@@ -132,12 +133,17 @@
       transition: 0.5s all;
       padding-right: 20px;
       padding-left: 19px;
-      margin-bottom: 0;
-      list-style-type: none;
+
       &_active {
         transform: translateX(-100%);
         margin-left: 0px;
       }
+    }
+
+    &-feature {
+      padding: 0;
+      margin-bottom: 0;
+      list-style-type: none;
     }
 
     &-points {
@@ -148,7 +154,7 @@
       color: #555555;
       margin-bottom: 10px;
       &:before {
-        content: '';
+        content: "";
         position: absolute;
         width: 5px;
         height: 5px;
@@ -174,13 +180,6 @@
       }
     }
 
-    &-divider {
-      margin: 17px 0 19px 0;
-      width: 263px;
-      height: 1px;
-      background: #e8e8e8;
-    }
-
     &-footer {
       display: flex;
       justify-content: space-between;
@@ -204,6 +203,53 @@
       font-weight: 700;
       font-size: 20px;
       color: #050505;
+    }
+  }
+
+  &__divider {
+    margin: 17px 0 19px 0;
+    width: 263px;
+    height: 1px;
+    background: #e8e8e8;
+    &-long {
+      margin: 0 auto;
+      margin-top: 20px;
+      width: 500px;
+      height: 2px;
+    }
+  }
+
+  &__promotion {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    &-title {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+
+  .timer {
+    min-width: 330px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__block {
+      min-width: 70px;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3px;
+      border-radius: 5px;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 38px;
+      background: linear-gradient(90deg, #670000,#db0000,#ff2d2d);
+      box-shadow: 3px 3px 10px #000000;
     }
   }
 }

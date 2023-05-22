@@ -104,7 +104,87 @@ window.addEventListener("DOMContentLoaded", function () {
   
   switchDots();
 
-  //--------catalog items --------
+  // -------- adding catalog items by using classes--------
+
+  class CatalogItem {
+    constructor(src, alt, subtitle, descr, parentSelector, oldPrice, newPrice) {
+      this.src = src;
+      this.alt = alt;
+      this.subtitle = subtitle;
+      this.descr = descr;
+      this.parent = document.querySelector(parentSelector);
+      this.oldPrice = oldPrice;
+      this.newPrice = newPrice;
+      this.transfer = 70;
+      this.changePriceToRUB();
+    }
+
+    changePriceToRUB() {
+      this.oldPrice = this.oldPrice * this.transfer;
+      this.newPrice = this.newPrice * this.transfer;
+    }
+
+    render() {
+      const element = document.createElement('div');
+      element.innerHTML = `
+        <div class="catalog__item">
+        <div class="catalog__item-wrapper">
+
+          <div class="catalog__item-content catalog__item-content_active">
+            <img src=${this.src} alt=${this.alt} class="catalog__item-img">
+            <div class="catalog__item-subtitle">${this.subtitle}</div>
+            <div class="catalog__item-descr">${this.descr}</div>
+            <a href="#" class="catalog__item-link">Подробнее</a>
+          </div>
+
+          <div class="catalog__item-list">
+            <ul class="catalog__item-feature">
+              <li class="catalog__item-points">
+                Вы услышите звуковое оповещение о нужном пульсе во время тренировки;
+              </li>
+              <li class="catalog__item-points">
+                Вы увидите информативный графический индикатор целевых тренировочных зон пульса;
+              </li>
+              <li class="catalog__item-points">
+                Также Вы увидите информацию о расходе калорий за тренировку;
+              </li>
+              <li class="catalog__item-points">
+                Вы сможете посмотреть данные по 10 тренировкам.
+              </li>
+
+            </ul>
+            <a href="#" class="catalog__item-back">назад</a>
+          </div>
+        
+        </div>
+        <div class="catalog__divider"></div>
+
+        <div class="catalog__item-footer">
+          <div class="catalog__item-prices">
+            <div class="catalog__item-old">${this.oldPrice} руб.</div>
+            <div class="catalog__item-new">${this.newPrice} руб.</div>
+          </div>
+          <button class="button button_buy">купить</button>
+        </div>
+      </div>
+      `;
+      this.parent.append(element);
+    }
+  }
+
+  for (let i = 1; i <= 6; i++) {
+    new CatalogItem(
+    "img/pulse.png",
+    "pulsometer",
+    `Пульсометр Polar FT${i}`,
+    "Для первых шагов в тренировках, основанных на сердечном ритме",
+    ".catalog .catalog__content",
+    70,
+    65
+  ).render();
+  }
+
+  //--------catalog tabs / content --------
 
   const itemContent = document.querySelectorAll(".catalog__item-content"),
     itemList = document.querySelectorAll(".catalog__item-list"),
@@ -167,6 +247,64 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 
   chooseTab(tabs);
+
+  //------Timer-------
+
+  const deadline = "2023-09-01";
+
+  function getTimeRemaining(endtime) {
+    let days, hours, minutes, seconds;
+    const t = Date.parse(endtime) - Date.parse(new Date());
+
+    if (t <= 0) {
+      days = 0;
+      hours = 0;
+      minutes = 0;
+      seconds = 0;
+    } else {
+      seconds = Math.floor((t / 1000) % 60);
+      minutes = Math.floor((t / 1000 / 60) % 60);
+      hours = Math.floor((t / (1000 * 60 * 60) % 24));
+      days = Math.floor(t / (1000 * 60 * 60 * 24));
+    }
+          
+
+    return { total: t, seconds, minutes, hours, days };
+  }
+
+  function getZero(num) {
+    if (num >= 0 && num < 10) {
+      return `0${num}`;
+    } else {
+      return num;
+    }
+  }
+
+  function setClock(selector, endtime) {
+    const timer = document.querySelector(selector),
+          days = timer.querySelector('#days'),
+          hours = timer.querySelector('#hours'),
+          minutes = timer.querySelector('#minutes'),
+          seconds = timer.querySelector('#seconds'),
+          timeInterval = setInterval(updateClock, 1000);
+
+    updateClock();
+
+    function updateClock() {
+      const t = getTimeRemaining(endtime);
+
+      days.innerHTML = getZero(t.days);
+      hours.innerHTML = getZero(t.hours);
+      minutes.innerHTML = getZero(t.minutes);
+      seconds.innerHTML = getZero(t.seconds);
+
+      if (t.total <= 0) {
+        clearInterval(timeInterval);
+      }
+    }
+  }
+
+  setClock(".timer", deadline);
 
   //------Modal------
 
@@ -232,4 +370,81 @@ window.addEventListener("DOMContentLoaded", function () {
   showModalConsultation();
   showModalOrder();
   closeModals();
+
+  //---------Forms-------------
+
+  jQuery(function($){
+
+    function validateForms(form) {
+      $(form).validate({
+        rules: {
+          name: {
+            required: true,
+            minlength: 2
+          },
+          phone: 'required',
+          email: {
+            required: true,
+            email: true
+          }
+        },
+        messages: {
+          name: {
+            required: "Пожалуйста, введите свое имя",
+            minlength: jQuery.validator.format("Необходимо ввести минимум {0} символа")
+          },
+          phone: 'Пожалуйста, введите свой номер телефона',
+          email: {
+            required: 'Пожалуйста, введите свою почту',
+            email: 'Некорректный адрес почты'
+          }
+        }
+      });
+    }
+
+    validateForms('#consultation form');
+    validateForms('#consultation-form');
+    validateForms('#order form');
+
+    $("input[name=phone]").mask("+7 (999) 999-99-99");
+
+    // ----- Posting data from forms -------
+
+    $('form').submit(function(e) {
+      e.preventDefault();
+
+      if (!$(this).valid()) {
+        return;
+      }
+
+      $.ajax({
+        type: 'POST',
+        url: 'mailer/smart.php',
+        data: $(this).serialize()
+      }).done(function() {
+        $(this).find('input').val('');
+        $('#consultation, #order').fadeOut();
+        $('.overlay, #thanks').fadeIn('slow');
+
+        $('form').trigger('reset');
+      });
+      return false;
+    })
+
+    //---------Recalculation scroll & pageup-----------
+
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > 1200) {
+        $('.pageup').fadeIn();
+      } else {
+        $('.pageup').fadeOut();
+      }
+    });
+
+    $("a[href^='#']").click(function() {
+      const _href = $(this).attr("href");
+      $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
+      return false;
+    });
+ });
 });
